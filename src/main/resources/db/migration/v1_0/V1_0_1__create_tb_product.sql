@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS product (
     id             BIGSERIAL,                     -- 상품 번호
     productName    VARCHAR(255),                  -- 상품명
-    productPrice   VARCHAR(255),                  -- 상품 가격
+    productPrice   INT                            -- 상품 가격(기존 VARCHAR(255)에서 INT로 수정)
     productContent TEXT,                          -- 상품 정보
 
     status         VARCHAR(255),                  -- 상품 현황 (재료 소진, 판매 중, 배송 중)
     created_at     TIMESTAMP       DEFAULT NOW(), -- 상품 입고일
-    updated_at     TIMESTAMP,                     -- 상품 등록일
+    updated_at     TIMESTAMP,                     -- 최종 수정일 (기존 '상품 등록일'에서 '최종 수정일'로 수정)
 
     CONSTRAINT pk_product PRIMARY KEY (id)        -- id를 기본키로 지정
 );
@@ -21,4 +21,4 @@ COMMENT ON COLUMN product.productPrice      IS '상품 가격';
 COMMENT ON COLUMN product.productContent    IS '상품 정보';
 COMMENT ON COLUMN product.status            IS '상품 현황';
 COMMENT ON COLUMN product.created_at        IS '상품 입고일';
-COMMENT ON COLUMN product.updated_at        IS '상품 등록일';
+COMMENT ON COLUMN product.updated_at        IS '최종 수정일'; -- (기존 '상품 등록일'에서 '최종 수정일'로 수정)
