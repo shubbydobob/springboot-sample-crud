@@ -1,6 +1,9 @@
 package boot.sample.study.bootsample.product.controller.dto;
 
 import boot.sample.study.bootsample.product.domain.Product;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
@@ -24,9 +27,22 @@ public final class ProductDtos {
             @NotBlank(message = "상품을 선택해주세요.")               // 필수 값 검증 (공백 허용 안 함)
             @Size(min = 1, message = "최소 주문 수량은 1개입니다.")    // 최소 길이 검증
             @Size(max = 10, message = "최대 주문 수량은 10개입니다.")  // 최대 길이 검증
-            String productName                                     // 생성할 상품명
+            String productName,                                    // 생성할 상품명
+
+            @NotNull(message = "상품 가격을 확인해주세요.")
+            @Min(value = 10000, message = "최소 주문 금액은 10000원입니다")
+            @Max(value = 1000000, message = "최대 주문 금액은 100만원입니다.") // ✅ 최대 값 제한
+            Integer productPrice,
+
+            @NotBlank(message = "상품 설명을 입력하십시오.")
+            @Size(min = 10, message = "설명은 10 글자 이상 입력하세요.")
+            String productContent
     ) {}
-    @Builder record ProductUpdateRequest(
+
+    @Builder
+    public record ProductUpdateResponse(
             Product product                                        // 업데이트할 상품 객체
     ) {}
+
+
 }
