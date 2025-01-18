@@ -1,6 +1,8 @@
 ### 🌱 수정 및 테스트를 하기 위한 Branch 'fix-issue' 입니다.
 - '상품 가격'을 VARCHAR(255) 타입에서 INT로 수정하였습니다.
 
+- '상품 가격'을 VARCHAR(255) 타입에서 INT로 수정하였습니다.
+
 - '상품 등록일'에서 '최종 수정일'로 수정하였습니다.
   
 <img src="https://github.com/user-attachments/assets/0485130c-00e1-4de8-b381-79068194290d" alt="fix-issue #2"
